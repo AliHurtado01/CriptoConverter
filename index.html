@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cripto Converter — Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/scripts.js" defer></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card">
+        <h1>Cripto Converter</h1>
+        <p class="sub">
+          Convierte cantidades de <strong>BTC / ETH / SOL</strong> a
+          <strong>USD / EUR</strong> usando <em>tarifas fijas de ejemplo</em>.
+        </p>
+
+        <div class="row">
+          <div>
+            <label for="crypto">Criptomoneda</label>
+            <select id="crypto">
+              <option value="bitcoin">Bitcoin (BTC)</option>
+              <option value="ethereum">Ethereum (ETH)</option>
+              <option value="solana">Solana (SOL)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="fiat">Moneda</label>
+            <select id="fiat">
+              <option value="usd">USD — Dólar</option>
+              <option value="eur">EUR — Euro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="amount">Cantidad</label>
+            <input
+              id="amount"
+              type="number"
+              placeholder="0.00"
+              step="any"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <div class="result" id="result">—</div>
+        <p class="muted" id="unitPrice">—</p>
+        <p class="note">Versión demo para proyecto de CoderHouse.</p>
+        <p class="note">Ali Hurtado.</p>
+
+        <p class="error" id="error"></p>
+      </div>
+    </div>
+  </body>
+</html>
