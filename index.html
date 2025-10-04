@@ -1,58 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <title>Cripto Converter — Demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Convertidor de Criptomonedas · Final</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
-    <script src="./js/scripts.js" defer></script>
+    <!-- Librerías externas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   </head>
   <body>
-    <div class="wrap">
-      <div class="card">
-        <h1>Cripto Converter</h1>
-        <p class="sub">
-          Convierte cantidades de <strong>BTC / ETH / SOL</strong> a
-          <strong>USD / EUR</strong> usando <em>tarifas fijas de ejemplo</em>.
-        </p>
+    <header class="header">
+      <div class="brand">
+        <img class="logo" src="/imgs/logoCC.png" alt="Logo" />
+        <h1>Convertidor de Criptomonedas</h1>
+      </div>
+      <nav class="nav">
+        <button id="btnHistory" class="btn ghost">
+          Historial (<span id="historyCount">0</span>)
+        </button>
+        <button id="btnReset" class="btn ghost">Reiniciar</button>
+      </nav>
+    </header>
 
-        <div class="row">
-          <div>
-            <label for="crypto">Criptomoneda</label>
-            <select id="crypto">
-              <option value="bitcoin">Bitcoin (BTC)</option>
-              <option value="ethereum">Ethereum (ETH)</option>
-              <option value="solana">Solana (SOL)</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="fiat">Moneda</label>
-            <select id="fiat">
-              <option value="usd">USD — Dólar</option>
-              <option value="eur">EUR — Euro</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="amount">Cantidad</label>
+    <main class="container">
+      <section id="converter" class="panel">
+        <h2>Conversión</h2>
+        <form id="formConvert" class="form">
+          <label
+            >Monto
             <input
-              id="amount"
               type="number"
-              placeholder="0.00"
               step="any"
-              min="0"
+              name="amount"
+              id="amount"
+              required
             />
+          </label>
+          <label
+            >De
+            <select id="from" name="from"></select>
+          </label>
+          <label
+            >A
+            <select id="to" name="to"></select>
+          </label>
+          <button class="btn primary" type="submit">Convertir</button>
+        </form>
+        <div id="result" class="result"></div>
+        <div id="ticket" class="ticket hidden"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Tendencia 7 días</h2>
+        <canvas id="chart" height="120"></canvas>
+        <div class="small">
+          Fuente: CoinGecko (con fallback local si no hay conexión)
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Mercado rápido</h2>
+        <div id="market" class="grid"></div>
+      </section>
+    </main>
+
+    <!-- Template de card de mercado (HTML generado desde JS) -->
+    <template id="tpl-coin">
+      <article class="card">
+        <img class="card__img" alt="icono" />
+        <div class="card__body">
+          <div class="row">
+            <h3 class="card__title"></h3>
+            <span class="badge"></span>
+          </div>
+          <p class="card__desc"></p>
+          <div class="row">
+            <strong class="price"></strong>
+            <button class="btn small addPair">Usar en conversor</button>
           </div>
         </div>
+      </article>
+    </template>
 
-        <div class="result" id="result">—</div>
-        <p class="muted" id="unitPrice">—</p>
-        <p class="note">Versión demo para proyecto de CoderHouse.</p>
-        <p class="note">Ali Hurtado.</p>
-
-        <p class="error" id="error"></p>
-      </div>
-    </div>
+    <script type="module" src="./js/app.js"></script>
   </body>
 </html>
