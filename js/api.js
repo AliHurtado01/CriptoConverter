@@ -32,7 +32,7 @@ const FIAT = {
 };
 export const ASSETS = { ...COINS, ...FIAT };
 
-/** Devuelve precios simples (simple/price). Fallback: ./data/rates.json */
+/** Devuelve precios simples */
 export async function getSimplePrices(vs = "usd") {
   try {
     const ids = Object.values(COINS)
@@ -55,7 +55,7 @@ export async function getSimplePrices(vs = "usd") {
   }
 }
 
-/** Serie de 7 días para una cripto (market_chart). Fallback: curva plana del precio actual */
+/** Serie de 7 días para una cripto */
 export async function get7dSeries(coin = "bitcoin", vs = "usd") {
   try {
     const url = `https://api.coingecko.com/api/v3/coins/${coin}/market_chart?vs_currency=${vs}&days=7`;

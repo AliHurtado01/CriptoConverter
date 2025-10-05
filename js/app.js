@@ -74,7 +74,7 @@ function labelFor(sym) {
   return meta.name || sym.toUpperCase();
 }
 
-// ----- Mercado rápido (HTML desde JS) -----
+// ----- Mercado rápido  -----
 async function renderMarket() {
   const data = await getSimplePrices("usd");
   const coins = ["btc", "eth", "sol", "ada", "xrp"];
@@ -141,7 +141,7 @@ async function onConvert(ev) {
   } else if (to === "usd" && priceFromUSD) {
     result = amount * priceFromUSD;
   } else {
-    // ambos cripto o cripto->fiat distinta
+
     const inUSD = amount * priceFromUSD;
     result = inUSD / (priceToUSD || 1);
   }

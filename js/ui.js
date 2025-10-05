@@ -1,4 +1,4 @@
-// ui.js – helpers UI con SweetAlert2
+
 export const UI = {
   toast(title, text = "", icon = "success", timer = 1800) {
     return Swal.fire({
